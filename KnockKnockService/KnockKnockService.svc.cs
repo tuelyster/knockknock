@@ -72,9 +72,8 @@ namespace KnockKnockService
         public string ReverseWords(string s)
         {
             Trace.TraceInformation("ReverseWords called with s = '" + s + "'");
-            if (String.IsNullOrEmpty(s))
-                throw new ArgumentNullException();
-            s = s.Trim();
+            //if (String.IsNullOrEmpty(s))
+            //    throw new ArgumentNullException();
             string output = string.Join(" ", s.Split(' ').Select(x => new String(x.Reverse().ToArray())).ToArray());
             Trace.TraceInformation("ReverseWords answers: '" + output + "'");
             return output;
