@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using System.Diagnostics;
 
 namespace KnockKnockService
 {
@@ -14,6 +15,7 @@ namespace KnockKnockService
         
         Guid IRedPill.WhatIsYourToken()
         {
+            Trace.TraceInformation("WhatIsYourToken called");
             // Return dummy token for now
             return new Guid("00000000-0000-0000-0000-000000000000");
 
@@ -21,6 +23,7 @@ namespace KnockKnockService
 
         public long FibonacciNumber(long n)
         {
+            Trace.TraceInformation("FibonacciNumber called with n = " + n);
             // Start with 0 and then add 1 for the first iteration
             long fibo = 0;
             long previousFibo = 1;
@@ -35,6 +38,7 @@ namespace KnockKnockService
 
         public knockknock.readify.net.TriangleType WhatShapeIsThis(int a, int b, int c)
         {
+            Trace.TraceInformation("WhatShapeIsThis: a=" + a + ", b=" + b + ", c=" + c);
             // All sides must have a valid length
             if (a <= 0 || b <= 0 || c <= 0) return TriangleType.Error;
 
@@ -58,6 +62,7 @@ namespace KnockKnockService
 
         public string ReverseWords(string s)
         {
+            Trace.TraceInformation("ReverseWords called with s = " + s);
             if (String.IsNullOrEmpty(s))
                 return "";
 
