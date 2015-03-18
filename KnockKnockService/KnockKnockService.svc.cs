@@ -25,14 +25,21 @@ namespace KnockKnockService
         {
             Trace.TraceInformation("FibonacciNumber called with n = " + n);
             // Start with 0 and then add 1 for the first iteration
+            if (Math.Abs(n) > 92)
+                throw new ArgumentOutOfRangeException("Return value will not fit in Int64");
             long fibo = 0;
             long previousFibo = 1;
-            for (int i = 0; i < n; i++)
+            for (int i = 0; i < Math.Abs(n); i++)
             {
                 long tempFibo = fibo + previousFibo;
                 previousFibo = fibo;
                 fibo = tempFibo;
             }
+            if (n < 0 && n % 2 == 0)
+            {
+                fibo = fibo * -1;
+            }
+            Trace.TraceInformation("FibonacciNumber answered: " + fibo);
             return fibo;
         }
 
@@ -47,6 +54,8 @@ namespace KnockKnockService
             if (a == b) hits++;
             if (a == c) hits++;
             if (b == c) hits++;
+            Trace.TraceInformation("WhatShapeIsThis found #hits: " + hits.ToString());
+
             switch (hits)
             {
                 case 0:
@@ -64,9 +73,11 @@ namespace KnockKnockService
         {
             Trace.TraceInformation("ReverseWords called with s = " + s);
             if (String.IsNullOrEmpty(s))
-                return "";
-
-            return string.Join(" ", s.Split(' ').Select(x => new String(x.Reverse().ToArray())).ToArray());
+                throw new ArgumentNullException();
+            s = s.Trim();
+            string output = string.Join(" ", s.Split(' ').Select(x => new String(x.Reverse().ToArray())).ToArray());
+            Trace.TraceInformation("ReverseWords answers: '" + output + "'");
+            return output;
         }
     }
 }
