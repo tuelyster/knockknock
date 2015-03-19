@@ -16,8 +16,7 @@ namespace KnockKnockService
         Guid IRedPill.WhatIsYourToken()
         {
             Trace.TraceInformation("WhatIsYourToken called");
-            // Return dummy token for now
-            return new Guid("00000000-0000-0000-0000-000000000000");
+            return new Guid("cf9c6571-7cbb-4423-9271-833108cf4c6c");
 
         }
 
